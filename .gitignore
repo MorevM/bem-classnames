@@ -1,0 +1,23 @@
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+
+# Log Files
+*.log*
+
+# Editors
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
+# Project-specific
+coverage
+dist
+
+todo

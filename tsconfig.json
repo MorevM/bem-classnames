@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"esModuleInterop": true,
+		"strict": true,
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"forceConsistentCasingInFileNames": true,
+		"outDir": "./dist",
+		"checkJs": false,
+		"allowJs": false,
+		"skipLibCheck": true,
+		"types": ["node"]
+	},
+	"ts-node": {
+		"esm": true
+	},
+	"exclude": [
+		"dist"
+	]
+}

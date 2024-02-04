@@ -1,0 +1,62 @@
+{
+	"name": "@morev/bem-classnames",
+	"description": "Simple utility for generating classnames according to the BEM methodology.",
+	"type": "module",
+	"sideEffects": false,
+	"version": "1.0.0",
+	"private": false,
+	"license": "MIT",
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"author": {
+		"name": "Maxim Morev",
+		"email": "max.seainside@gmail.com"
+	},
+	"homepage": "https://github.com/MorevM/bem-classnames#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/MorevM/bem-classnames"
+	},
+	"files": [
+		"dist"
+	],
+	"exports": {
+		"import": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		},
+		"require": {
+			"types": "./dist/index.d.cts",
+			"default": "./dist/index.cjs"
+		}
+	},
+	"main": "dist/index.cjs",
+	"module": "dist/index.js",
+	"types": "./dist/index.d.ts",
+	"scripts": {
+		"prepare": "lefthook install",
+		"release": "release-it --disable-metrics",
+		"lint": "yarn lint:eslint",
+		"lint:fix": "yarn lint:eslint:fix",
+		"lint:eslint": "eslint \"**/*.{js,ts,json,json5,jsonc,yml,yaml}\"",
+		"lint:eslint:fix": "eslint \"**/*.{js,ts,json,json5,jsonc,yml,yaml}\" --fix",
+		"test": "vitest",
+		"build": "tsup"
+	},
+	"dependencies": {
+		"@morev/utils": "^3.6.0"
+	},
+	"devDependencies": {
+		"@morev/commitlint-config": "^0.2.2",
+		"@morev/eslint-config": "^28.0.0",
+		"@release-it/conventional-changelog": "^8.0.1",
+		"eslint": "^8.56.0",
+		"lefthook": "^1.6.1",
+		"release-it": "^17.0.3",
+		"tsup": "^8.0.1",
+		"typescript": "^5.3.3",
+		"vitest": "^1.2.2"
+	}
+}
