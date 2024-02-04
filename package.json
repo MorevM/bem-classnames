@@ -3,7 +3,7 @@
 	"description": "Simple utility for generating classnames according to the BEM methodology.",
 	"type": "module",
 	"sideEffects": false,
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"private": false,
 	"license": "MIT",
 	"publishConfig": {
