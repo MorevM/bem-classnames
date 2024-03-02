@@ -1,5 +1,13 @@
 
 
+## [1.1.0](https://github.com/MorevM/bem-classnames/compare/v1.0.2...v1.1.0) (2024-03-02)
+
+
+### Features
+
+* Export module types ([6f91928](https://github.com/MorevM/bem-classnames/commit/6f919284b891c09746e79d18f63e185cf0841355))
+
+
 ## [1.0.2](https://github.com/MorevM/bem-classnames/compare/v1.0.1...v1.0.2) (2024-02-04)
 
 
