@@ -3,6 +3,8 @@ import { isString, isObject, mergeObjects } from '@morev/utils';
 import type { _FunctionOptions, BlockFactory, ModuleOptions } from './types';
 import { defaultOptions, bemFunction } from './utils';
 
+export type { ModuleOptions, BemFunction, BlockFactory } from './types';
+
 /**
  * Returns a factory for creation classes in BEM notation with the specified settings. \
  * Allows to redefine module defaults.
