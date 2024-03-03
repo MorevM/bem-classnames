@@ -1,5 +1,12 @@
 
 
+## [1.1.1](https://github.com/MorevM/bem-classnames/compare/v1.1.0...v1.1.1) (2024-03-03)
+
+
+### Bug fixes
+
+* **types:** Duplicate JSDoc on top of interfaces ([c8cae35](https://github.com/MorevM/bem-classnames/commit/c8cae35d03162d2dba8a77badcff487196253cfd))
+
 ## [1.1.0](https://github.com/MorevM/bem-classnames/compare/v1.0.2...v1.1.0) (2024-03-02)
 
 
