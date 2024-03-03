@@ -62,6 +62,25 @@ export type ModuleOptions = {
 	};
 };
 
+/**
+ * Converts passed strings/objects into a valid class name.
+ *
+ * @example
+ *   const b = bemClassNames()('block');
+ *   b(null); b(); // => 'block'
+ *   b(null, { modifier: true }); => 'block_modifier'
+ *   b('element'); // => 'block__element'
+ * @example
+ *   const b = bemClassNames()('block');
+ *   b(null, 'mixin'); // => 'block mixin'
+ *   b(null, { modifier: true }); => 'block_modifier'
+ *   b('element', { active: true }, 'static'); // => 'block__element block__element--active static'
+ *
+ * @param   el     The name of the element, can be omitted (or `null`) if you need to interact with the modifiers and mixins of the block itself.
+ * @param   args   List of mixins (if passed string) and modifiers (if passed object).
+ *
+ * @returns        A valid class name according to the BEM methodology.
+ */
 export interface BemFunction {
 	/**
 	 * Converts passed strings/objects into a valid class name.
@@ -85,6 +104,19 @@ export interface BemFunction {
 	(el?: string | PlainObject | null, ...args: Array<string | PlainObject>): string;
 }
 
+/**
+ * Returns a factory for creation BEM class names for specified block name.
+ *
+ * @example
+ *   const blockFactory = bemClassNames();
+ *   blockFactory('block')(); // => 'block'
+ *
+ *   const namespacedBlockFactory = bemClassNames({namespace: 'b-'});
+ *   namespacedBlockFactory('block')(); // => 'b-block'
+ *
+ * @param   block   The block name. \
+ *                  It's recommended to use it every time when you need BEM entities with different options (such as `namespace`).
+ */
 export interface BlockFactory {
 	/**
 	 * Returns a factory for creation BEM class names for specified block name.
