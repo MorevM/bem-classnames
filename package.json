@@ -38,10 +38,8 @@
 	"scripts": {
 		"prepare": "lefthook install",
 		"release": "release-it --disable-metrics",
-		"lint": "yarn lint:eslint",
-		"lint:fix": "yarn lint:eslint:fix",
-		"lint:eslint": "eslint \"**/*.{js,ts,json,json5,jsonc,yml,yaml}\"",
-		"lint:eslint:fix": "eslint \"**/*.{js,ts,json,json5,jsonc,yml,yaml}\" --fix",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
 		"test": "vitest",
 		"build": "tsup"
 	},
