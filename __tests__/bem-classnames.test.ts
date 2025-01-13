@@ -1,8 +1,9 @@
-import type { PartialDeep } from '@morev/utils';
+/* eslint-disable vitest/valid-title, vitest/require-hook -- This is test factories */
+import { describe, expect, it } from 'vitest';
 import { mergeObjects } from '@morev/utils';
-import { describe, it, expect } from 'vitest';
 import { bemClassnames } from '../src/index';
 import { defaultOptions } from '../src/utils';
+import type { PartialDeep } from '@morev/utils';
 
 import type { BemFunction, ModuleOptions } from '../src/types';
 
@@ -134,7 +135,7 @@ const testsFactory = (name: string, _options?: PartialDeep<ModuleOptions>) => {
 		describe('Block', () => {
 			const tests = testCasesFactory(block, null, options);
 
-			tests.forEach(test => {
+			tests.forEach((test) => {
 				it(test.name, () => expect(test.result).toBe(test.expected));
 			});
 
@@ -146,7 +147,7 @@ const testsFactory = (name: string, _options?: PartialDeep<ModuleOptions>) => {
 		describe('Element', () => {
 			const tests = testCasesFactory(block, 'element', options);
 
-			tests.forEach(test => {
+			tests.forEach((test) => {
 				it(test.name, () => expect(test.result).toBe(test.expected));
 			});
 		});

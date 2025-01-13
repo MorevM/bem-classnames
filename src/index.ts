@@ -1,9 +1,9 @@
+import { isObject, isString, mergeObjects } from '@morev/utils';
+import { bemFunction, defaultOptions } from './utils';
 import type { PlainObject } from '@morev/utils';
-import { isString, isObject, mergeObjects } from '@morev/utils';
 import type { _FunctionOptions, BlockFactory, ModuleOptions } from './types';
-import { defaultOptions, bemFunction } from './utils';
 
-export type { ModuleOptions, BemFunction, BlockFactory } from './types';
+export type { BemFunction, BlockFactory, ModuleOptions } from './types';
 
 /**
  * Returns a factory for creation classes in BEM notation with the specified settings. \
@@ -31,7 +31,7 @@ export const bemClassnames = (userOptions?: Partial<ModuleOptions>): BlockFactor
 		isString(el) && (result.element = el);
 		isObject(el) && (result.modifiers = el);
 
-		args.forEach(arg => {
+		args.forEach((arg) => {
 			isString(arg) && arg.length && (result.mixins.push(arg));
 			isObject(arg) && (result.modifiers = { ...result.modifiers, ...arg });
 		});

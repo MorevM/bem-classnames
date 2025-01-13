@@ -12,12 +12,12 @@
 		"checkJs": false,
 		"allowJs": false,
 		"skipLibCheck": true,
-		"types": ["node"]
+		"types": ["node"],
 	},
 	"ts-node": {
-		"esm": true
+		"esm": true,
 	},
 	"exclude": [
-		"dist"
-	]
+		"dist",
+	],
 }
