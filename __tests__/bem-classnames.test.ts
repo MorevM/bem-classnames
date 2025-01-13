@@ -4,11 +4,11 @@ import { describe, it, expect } from 'vitest';
 import { bemClassnames } from '../src/index';
 import { defaultOptions } from '../src/utils';
 
-import type { ModuleOptions } from '../src/types';
+import type { BemFunction, ModuleOptions } from '../src/types';
 
 const testOptionsFactory = (options: Partial<ModuleOptions>) => bemClassnames(options)('block');
 
-const testCasesFactory = (block: CallableFunction, element: string | null, options: ModuleOptions) => {
+const testCasesFactory = (block: BemFunction, element: string | null, options: ModuleOptions) => {
 	const ds = options.delimiters; // just shortcut
 	const which = element ? `Element` : `Block`;
 	const root = element ? `${options.namespace}block${ds.element}element` : `${options.namespace}block`;
