@@ -16,7 +16,10 @@ export type { ModuleOptions, BemFunction, BlockFactory } from './types';
 export const bemClassnames = (userOptions?: Partial<ModuleOptions>): BlockFactory => {
 	const options = mergeObjects(defaultOptions, userOptions ?? {}) as Required<ModuleOptions>;
 
-	return (block: string) => (el?: string | PlainObject | null, ...args: Array<string | PlainObject>) => {
+	return (block: string) => (
+		el?: string | PlainObject | null,
+		...args: Array<string | PlainObject | null | undefined>
+	) => {
 		const result: _FunctionOptions = {
 			block,
 			namespace: options.namespace,

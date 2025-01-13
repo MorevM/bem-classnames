@@ -101,7 +101,7 @@ export interface BemFunction {
 	 *
 	 * @returns        A valid class name according to the BEM methodology.
 	 */
-	(el?: string | PlainObject | null, ...args: Array<string | PlainObject>): string;
+	(el?: string | PlainObject | null, ...args: Array<string | PlainObject | null | undefined>): string;
 }
 
 /**
