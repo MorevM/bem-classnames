@@ -2,9 +2,9 @@
 	"name": "@morev/bem-classnames",
 	"description": "Simple utility for generating classnames according to the BEM methodology.",
 	"type": "module",
+	"private": false,
 	"sideEffects": false,
 	"version": "1.1.1",
-	"private": false,
 	"license": "MIT",
 	"publishConfig": {
 		"access": "public",
@@ -46,17 +46,17 @@
 		"build": "tsup"
 	},
 	"dependencies": {
-		"@morev/utils": "^3.6.0"
+		"@morev/utils": "^3.12.1"
 	},
 	"devDependencies": {
 		"@morev/commitlint-config": "^0.2.2",
-		"@morev/eslint-config": "^29.0.0",
+		"@morev/eslint-config": "^36.3.2",
 		"@release-it/conventional-changelog": "^8.0.1",
-		"eslint": "^8.57.0",
-		"lefthook": "^1.6.4",
-		"release-it": "^17.1.1",
-		"tsup": "^8.0.2",
-		"typescript": "^5.3.3",
-		"vitest": "^1.3.1"
+		"eslint": "^9.18.0",
+		"lefthook": "^1.10.3",
+		"release-it": "^18.1.1",
+		"tsup": "^8.3.5",
+		"typescript": "^5.7.3",
+		"vitest": "^2.1.8"
 	}
 }
