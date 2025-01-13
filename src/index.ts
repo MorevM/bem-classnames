@@ -32,7 +32,7 @@ export const bemClassnames = (userOptions?: Partial<ModuleOptions>): BlockFactor
 		isObject(el) && (result.modifiers = el);
 
 		args.forEach(arg => {
-			isString(arg) && (result.mixins.push(arg));
+			isString(arg) && arg.length && (result.mixins.push(arg));
 			isObject(arg) && (result.modifiers = { ...result.modifiers, ...arg });
 		});
 
