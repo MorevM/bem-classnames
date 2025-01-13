@@ -30,8 +30,28 @@ const testCasesFactory = (block: BemFunction, element: string | null, options: M
 			expected: `${root} mixin another-mixin`,
 		},
 		{
+			name: `${which} with empty mixin as string, mixin is not counted`,
+			result: block(element, ''),
+			expected: root,
+		},
+		{
+			name: `${which} with empty mixin as null, mixin is not counted`,
+			result: block(element, null),
+			expected: root,
+		},
+		{
+			name: `${which} with empty mixin as undefined, mixin is not counted`,
+			result: block(element, undefined),
+			expected: root,
+		},
+		{
+			name: `${which} with empty mixin as an empty object, mixin is not counted`,
+			result: block(element, {}),
+			expected: root,
+		},
+		{
 			name: `${which} with multiple mixins (separated)`,
-			result: block(element, 'mixin', 'another-mixin'),
+			result: block(element, 'mixin', '', 'another-mixin', null),
 			expected: `${root} mixin another-mixin`,
 		},
 		{
