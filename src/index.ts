@@ -1,4 +1,4 @@
-import { isObject, isString, mergeObjects } from '@morev/utils';
+import { isObject, isString } from '@morev/utils';
 import { bemFunction, defaultOptions } from './utils';
 import type { PlainObject } from '@morev/utils';
 import type { _FunctionOptions, BlockFactory, ModuleOptions } from './types';
@@ -14,7 +14,15 @@ export type { BemFunction, BlockFactory, ModuleOptions } from './types';
  * @returns
  */
 export const bemClassnames = (userOptions?: Partial<ModuleOptions>): BlockFactory => {
-	const options = mergeObjects(defaultOptions, userOptions ?? {}) as Required<ModuleOptions>;
+	const options: Required<ModuleOptions> = {
+		hyphenate: userOptions?.hyphenate ?? defaultOptions.hyphenate,
+		namespace: userOptions?.namespace ?? defaultOptions.namespace,
+		delimiters: {
+			element: userOptions?.delimiters?.element ?? defaultOptions.delimiters.element,
+			modifier: userOptions?.delimiters?.modifier ?? defaultOptions.delimiters.modifier,
+			modifierValue: userOptions?.delimiters?.modifierValue ?? defaultOptions.delimiters.modifierValue,
+		},
+	};
 
 	return (block: string) => (
 		el?: string | PlainObject | null,
