@@ -1,9 +1,6 @@
-import { isObject, isString } from '@morev/utils';
-import { bemFunction, defaultOptions } from './utils';
-import type { PlainObject } from '@morev/utils';
-import type { _FunctionOptions, BlockFactory, ModuleOptions } from './types';
-
-export type { BemFunction, BlockFactory, ModuleOptions } from './types';
+import { isObject, isString, kebabCase } from '@morev/utils';
+import { defaultOptions } from './utils';
+import type { BemModifiers, BlockFactory, ModuleOptions } from './types';
 
 /**
  * Returns a factory for creation classes in BEM notation with the specified settings. \
@@ -23,27 +20,54 @@ export const bemClassnames = (userOptions?: Partial<ModuleOptions>): BlockFactor
 			modifierValue: userOptions?.delimiters?.modifierValue ?? defaultOptions.delimiters.modifierValue,
 		},
 	};
+	const { delimiters, hyphenate, namespace } = options;
+	const doCase = hyphenate ? kebabCase : (value: string) => value;
 
-	return (block: string) => (
-		el?: string | PlainObject | null,
-		...args: Array<string | PlainObject | null | undefined>
-	) => {
-		const result: _FunctionOptions = {
-			block,
-			namespace: options.namespace,
-			element: '',
-			modifiers: {},
-			mixins: [],
+	return (block: string) => {
+		if (!block) {
+			throw new TypeError('Block name should be a non-empty string.');
+		}
+
+		const blockRoot = namespace + block;
+
+		return (
+			element?: string | BemModifiers | null,
+			...args: Array<string | BemModifiers | null | undefined>
+		) => {
+			const root = isString(element) && element
+				? blockRoot + delimiters.element + element
+				: blockRoot;
+			let modifiers = isObject(element) ? element : {};
+			let mixins = '';
+
+			args.forEach((arg) => {
+				// Mixins are accumulated as a string to avoid an array allocation on every call.
+				isString(arg) && arg.length && (mixins += mixins ? ` ${arg}` : arg);
+				isObject(arg) && (modifiers = { ...modifiers, ...arg });
+			});
+
+			let stackString = root;
+
+			// Modifiers are rendered before mixins regardless of the original argument order.
+			Object.keys(modifiers).forEach((modKey) => {
+				const modValue = modifiers[modKey];
+				if (modValue === false || modValue === null || modValue === undefined) return;
+
+				const modifier = `${root}${delimiters.modifier}${doCase(modKey)}`;
+				stackString += modValue === true
+					? ` ${modifier}`
+					: ` ${modifier}${delimiters.modifierValue}${doCase(modValue.toString())}`;
+			});
+
+			return mixins ? `${stackString} ${mixins}` : stackString;
 		};
-
-		isString(el) && (result.element = el);
-		isObject(el) && (result.modifiers = el);
-
-		args.forEach((arg) => {
-			isString(arg) && arg.length && (result.mixins.push(arg));
-			isObject(arg) && (result.modifiers = { ...result.modifiers, ...arg });
-		});
-
-		return bemFunction(result, options);
 	};
 };
+
+export type {
+	BemFunction,
+	BemModifiers,
+	BlockFactory,
+	ModifierValue,
+	ModuleOptions,
+} from './types';

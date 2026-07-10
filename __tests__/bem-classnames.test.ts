@@ -110,6 +110,11 @@ const testCasesFactory = (block: BemFunction, element: string | null, options: M
 			expected: `${root} ${root}${ds.modifier}theme${ds.modifierValue}dark`,
 		},
 		{
+			name: `${which} with numeric modifier`,
+			result: block(element, { iterator: 1 }),
+			expected: `${root} ${root}${ds.modifier}iterator${ds.modifierValue}1`,
+		},
+		{
 			name: `${which} with non-boolean multiple modifiers`,
 			result: block(element, { theme: 'dark', position: 'top' }),
 			expected: `${root} ${root}${ds.modifier}theme${ds.modifierValue}dark ${root}${ds.modifier}position${ds.modifierValue}top`,
@@ -155,8 +160,8 @@ const testsFactory = (name: string, _options?: PartialDeep<ModuleOptions>) => {
 };
 
 describe('Edge cases', () => {
-	it('Returns nothing if no block specified', () => {
-		expect(bemClassnames()('')()).toBe('');
+	it('Throws if no block specified', () => {
+		expect(() => bemClassnames()('')).toThrow('Block name should be a non-empty string.');
 	});
 });
 

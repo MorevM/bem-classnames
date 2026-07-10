@@ -1,6 +1,24 @@
 /* eslint-disable @typescript-eslint/prefer-function-type -- Using `type` export TSC loses JSDocs */
-import type { PlainObject } from '@morev/utils';
 
+/**
+ * Value of a single BEM modifier.
+ *
+ * `true` renders a boolean modifier, `false`/`null`/`undefined` skip it,
+ * strings and numbers render as modifier values.
+ *
+ * @example
+ * { active: true, disabled: false, theme: 'dark', order: 1 }
+ */
+export type ModifierValue = boolean | number | string | null | undefined;
+
+/**
+ * Plain object where keys are modifier names and values describe how each modifier should render.
+ */
+export type BemModifiers = Record<string, ModifierValue>;
+
+/**
+ * Options that control generated BEM class name syntax.
+ */
 export type ModuleOptions = {
 	/**
 	 * If `true`, then the modifier names and their values will be converted to kebab-case. \
@@ -101,7 +119,7 @@ export interface BemFunction {
 	 *
 	 * @returns        A valid class name according to the BEM methodology.
 	 */
-	(el?: string | PlainObject | null, ...args: Array<string | PlainObject | null | undefined>): string;
+	(el?: string | BemModifiers | null, ...args: Array<string | BemModifiers | null | undefined>): string;
 }
 
 /**
@@ -133,11 +151,3 @@ export interface BlockFactory {
 	 */
 	(block: string): BemFunction;
 }
-
-export type _FunctionOptions = {
-	block: string;
-	namespace: string;
-	element: string;
-	modifiers: object;
-	mixins: string[];
-};
