@@ -1,5 +1,5 @@
-import { isObject, isString, kebabCase } from '@morev/utils';
-import { defaultOptions } from './utils';
+import { isObject } from '@morev/utils';
+import { createCachedKebabCase, defaultOptions, isString } from './utils';
 import type { BemModifiers, BlockFactory, ModuleOptions } from './types';
 
 /**
@@ -21,7 +21,7 @@ export const bemClassnames = (userOptions?: Partial<ModuleOptions>): BlockFactor
 		},
 	};
 	const { delimiters, hyphenate, namespace } = options;
-	const doCase = hyphenate ? kebabCase : (value: string) => value;
+	const doCase = hyphenate ? createCachedKebabCase() : (value: string) => value;
 
 	return (block: string) => {
 		if (!block) {
@@ -34,6 +34,11 @@ export const bemClassnames = (userOptions?: Partial<ModuleOptions>): BlockFactor
 			element?: string | BemModifiers | null,
 			...args: Array<string | BemModifiers | null | undefined>
 		) => {
+			if (args.length === 0) {
+				if (element === undefined || element === null || element === '') return blockRoot;
+				if (isString(element)) return blockRoot + delimiters.element + element;
+			}
+
 			const root = isString(element) && element
 				? blockRoot + delimiters.element + element
 				: blockRoot;

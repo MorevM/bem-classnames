@@ -3,8 +3,8 @@ import { describe, expect, it } from 'vitest';
 import { mergeObjects } from '@morev/utils';
 import { bemClassnames } from '../src/index';
 import { defaultOptions } from '../src/utils';
-import type { PartialDeep } from '@morev/utils';
 
+import type { PartialDeep } from '@morev/utils';
 import type { BemFunction, ModuleOptions } from '../src/types';
 
 const testOptionsFactory = (options: Partial<ModuleOptions>) => bemClassnames(options)('block');
