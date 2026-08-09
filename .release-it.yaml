@@ -18,6 +18,8 @@ plugins:
           section: Bug fixes
         - type: refactor
           section: Refactoring
+        - type: perf
+          section: Performance
         - type: test
           section: Tests
         - type: docs
