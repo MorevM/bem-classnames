@@ -95,6 +95,21 @@ b('element', 'static');
 // block__element static
 ```
 
+## Benchmark
+
+The benchmark measures stable and varied class generation, factory creation, and cold starts. Run it after installing dependencies:
+
+```bash
+pnpm run benchmark
+```
+
+Save results to `benchmarks/results` and compare later changes against them:
+
+```bash
+pnpm run benchmark --save baseline
+pnpm run benchmark --compare benchmarks/results/<snapshot>.json
+```
+
 ## Resource links
 
 [BEM methodology](https://en.bem.info/methodology/)

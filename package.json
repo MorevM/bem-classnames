@@ -46,7 +46,8 @@
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"test": "vitest",
-		"build": "tsup"
+		"build": "tsup",
+		"benchmark": "pnpm run build && node benchmarks/bem-classnames.benchmark.mjs"
 	},
 	"dependencies": {
 		"@morev/utils": "^3.12.1"

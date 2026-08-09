@@ -1,0 +1,295 @@
+{
+	"createdAt": "2026-07-10T20:07:59.294Z",
+	"environment": {
+		"arch": "x64",
+		"node": "v24.16.0",
+		"platform": "linux",
+		"v8": "13.6.233.17-node.49"
+	},
+	"label": "fast-path-simple-calls-typeof-control",
+	"parameters": {
+		"coldStartSamples": 25,
+		"factoryIterations": 500000,
+		"factorySamples": 5,
+		"factoryWarmupIterations": 50000,
+		"stableIterations": 1000000,
+		"stableSamples": 5,
+		"stableWarmupIterations": 100000,
+		"variedIterations": 1000000,
+		"variedSamples": 5,
+		"variedWarmupIterations": 100000
+	},
+	"sections": {
+		"coldStart": [
+			{
+				"name": "Cold ESM import",
+				"workloadSize": 1,
+				"iterations": 25,
+				"medianMs": 51.498061,
+				"minMs": 40.938729,
+				"maxMs": 85.434457,
+				"samples": 25
+			},
+			{
+				"name": "Cold CJS require",
+				"workloadSize": 1,
+				"iterations": 25,
+				"medianMs": 9.633825,
+				"minMs": 8.591088,
+				"maxMs": 13.648527,
+				"samples": 25
+			}
+		],
+		"factory": [
+			{
+				"name": "Create factory, default options",
+				"workloadSize": 1,
+				"checksum": 2550000,
+				"iterations": 500000,
+				"medianMs": 14.351519999996526,
+				"minMs": 13.451591999997618,
+				"maxMs": 15.41008399999555,
+				"opsPerSecond": 34839515.25692895,
+				"samples": 5,
+				"warmupIterations": 50000
+			},
+			{
+				"name": "Create factory, partial delimiters",
+				"workloadSize": 1,
+				"checksum": 2550000,
+				"iterations": 500000,
+				"medianMs": 13.52438699999766,
+				"minMs": 13.150548999998136,
+				"maxMs": 14.492747999996936,
+				"opsPerSecond": 36970252.330112,
+				"samples": 5,
+				"warmupIterations": 50000
+			},
+			{
+				"name": "Create factory, all options",
+				"workloadSize": 1,
+				"checksum": 2550000,
+				"iterations": 500000,
+				"medianMs": 20.462164999997185,
+				"minMs": 19.748893999996653,
+				"maxMs": 22.199638000005507,
+				"opsPerSecond": 24435342.008046012,
+				"samples": 5,
+				"warmupIterations": 50000
+			},
+			{
+				"name": "Create block function",
+				"workloadSize": 1,
+				"checksum": 2550000,
+				"iterations": 500000,
+				"medianMs": 9.933862999998382,
+				"minMs": 8.852883999999904,
+				"maxMs": 10.819408999996085,
+				"opsPerSecond": 50332886.612195216,
+				"samples": 5,
+				"warmupIterations": 50000
+			}
+		],
+		"stable": [
+			{
+				"name": "Block only",
+				"workloadSize": 1,
+				"checksum": 25500000,
+				"iterations": 1000000,
+				"medianMs": 7.084073999999987,
+				"minMs": 1.2718610000000012,
+				"maxMs": 8.258071000000001,
+				"opsPerSecond": 141161710.05554175,
+				"samples": 5,
+				"warmupIterations": 100000
+			},
+			{
+				"name": "Element only",
+				"workloadSize": 1,
+				"checksum": 71400000,
+				"iterations": 1000000,
+				"medianMs": 4.742414999999994,
+				"minMs": 3.302035999999987,
+				"maxMs": 8.819733000000014,
+				"opsPerSecond": 210863030.75542763,
+				"samples": 5,
+				"warmupIterations": 100000
+			},
+			{
+				"name": "String mixins only",
+				"workloadSize": 1,
+				"checksum": 127500000,
+				"iterations": 1000000,
+				"medianMs": 188.91610400000002,
+				"minMs": 179.6856009999999,
+				"maxMs": 198.750754,
+				"opsPerSecond": 5293354.980473236,
+				"samples": 5,
+				"warmupIterations": 100000
+			},
+			{
+				"name": "Single boolean modifier",
+				"workloadSize": 1,
+				"checksum": 91800000,
+				"iterations": 1000000,
+				"medianMs": 379.908461,
+				"minMs": 349.97913500000004,
+				"maxMs": 414.489243,
+				"opsPerSecond": 2632213.0267059254,
+				"samples": 5,
+				"warmupIterations": 100000
+			},
+			{
+				"name": "Mixed boolean modifiers",
+				"workloadSize": 1,
+				"checksum": 198900000,
+				"iterations": 1000000,
+				"medianMs": 851.0416140000002,
+				"minMs": 828.7743399999999,
+				"maxMs": 869.6519450000001,
+				"opsPerSecond": 1175030.67247191,
+				"samples": 5,
+				"warmupIterations": 100000
+			},
+			{
+				"name": "Value modifiers",
+				"workloadSize": 1,
+				"checksum": 255000000,
+				"iterations": 1000000,
+				"medianMs": 1544.5599509999993,
+				"minMs": 1513.6560039999986,
+				"maxMs": 1709.9319070000001,
+				"opsPerSecond": 647433.5938547202,
+				"samples": 5,
+				"warmupIterations": 100000
+			},
+			{
+				"name": "Element, modifiers, mixins",
+				"workloadSize": 1,
+				"checksum": 494700000,
+				"iterations": 1000000,
+				"medianMs": 1735.895360999999,
+				"minMs": 1714.7801200000013,
+				"maxMs": 1773.263422,
+				"opsPerSecond": 576071.5896054524,
+				"samples": 5,
+				"warmupIterations": 100000
+			},
+			{
+				"name": "Multiple modifier objects",
+				"workloadSize": 1,
+				"checksum": 336600000,
+				"iterations": 1000000,
+				"medianMs": 2058.7941420000025,
+				"minMs": 1989.8266140000014,
+				"maxMs": 2145.3510140000035,
+				"opsPerSecond": 485721.2188434519,
+				"samples": 5,
+				"warmupIterations": 100000
+			},
+			{
+				"name": "No hyphenation",
+				"workloadSize": 1,
+				"checksum": 453900000,
+				"iterations": 1000000,
+				"medianMs": 342.4053050000002,
+				"minMs": 314.8682939999999,
+				"maxMs": 365.48763199999667,
+				"opsPerSecond": 2920515.4984383183,
+				"samples": 5,
+				"warmupIterations": 100000
+			},
+			{
+				"name": "Namespace and custom delimiters",
+				"workloadSize": 1,
+				"checksum": 397800000,
+				"iterations": 1000000,
+				"medianMs": 1318.9070300000021,
+				"minMs": 1258.4928220000002,
+				"maxMs": 1462.350704999997,
+				"opsPerSecond": 758203.5558639781,
+				"samples": 5,
+				"warmupIterations": 100000
+			},
+			{
+				"name": "Ignored empty arguments",
+				"workloadSize": 1,
+				"checksum": 25500000,
+				"iterations": 1000000,
+				"medianMs": 169.46059800000512,
+				"minMs": 157.69068200000038,
+				"maxMs": 176.88787999999477,
+				"opsPerSecond": 5901076.780101825,
+				"samples": 5,
+				"warmupIterations": 100000
+			}
+		],
+		"varied": [
+			{
+				"fixtures": [
+					"block only",
+					"null element",
+					"active block",
+					"disabled false",
+					"string mixin",
+					"button text element",
+					"card header mixin",
+					"button icon size"
+				],
+				"name": "Common UI calls",
+				"workloadSize": 8,
+				"checksum": 79687500,
+				"iterations": 1000000,
+				"medianMs": 216.4617320000034,
+				"minMs": 202.25405299999693,
+				"maxMs": 247.50354099999822,
+				"opsPerSecond": 4619754.220575045,
+				"samples": 5,
+				"warmupIterations": 100000
+			},
+			{
+				"fixtures": [
+					"single boolean",
+					"single value",
+					"mixed booleans",
+					"three values",
+					"numeric modifier",
+					"object as first argument",
+					"merged objects",
+					"no hyphenation"
+				],
+				"name": "Modifier shapes",
+				"workloadSize": 8,
+				"checksum": 223125000,
+				"iterations": 1000000,
+				"medianMs": 1148.059626999995,
+				"minMs": 1074.9840050000057,
+				"maxMs": 1193.0494610000023,
+				"opsPerSecond": 871034.8979112774,
+				"samples": 5,
+				"warmupIterations": 100000
+			},
+			{
+				"fixtures": [
+					"element full",
+					"block full",
+					"custom delimiters",
+					"button direction",
+					"card empty args",
+					"overridden modifier with mixin",
+					"no hyphen element"
+				],
+				"name": "Full mixed calls",
+				"workloadSize": 7,
+				"checksum": 290700018,
+				"iterations": 1000000,
+				"medianMs": 1058.1143870000014,
+				"minMs": 979.2906929999954,
+				"maxMs": 1117.171086000002,
+				"opsPerSecond": 945077.4058891978,
+				"samples": 5,
+				"warmupIterations": 100000
+			}
+		]
+	}
+}
