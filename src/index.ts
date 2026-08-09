@@ -42,27 +42,29 @@ export const bemClassnames = (userOptions?: Partial<ModuleOptions>): BlockFactor
 			const root = isString(element) && element
 				? blockRoot + delimiters.element + element
 				: blockRoot;
-			let modifiers = isObject(element) ? element : {};
+			let modifiers: BemModifiers | null = isObject(element) ? element : null;
 			let mixins = '';
 
 			args.forEach((arg) => {
 				// Mixins are accumulated as a string to avoid an array allocation on every call.
 				isString(arg) && arg.length && (mixins += mixins ? ` ${arg}` : arg);
-				isObject(arg) && (modifiers = { ...modifiers, ...arg });
+				isObject(arg) && (modifiers = modifiers ? { ...modifiers, ...arg } : arg);
 			});
 
 			let stackString = root;
 
 			// Modifiers are rendered before mixins regardless of the original argument order.
-			Object.keys(modifiers).forEach((modKey) => {
-				const modValue = modifiers[modKey];
-				if (modValue === false || modValue === null || modValue === undefined) return;
+			if (modifiers) {
+				Object.keys(modifiers).forEach((modKey) => {
+					const modValue = modifiers![modKey];
+					if (modValue === false || modValue === null || modValue === undefined) return;
 
-				const modifier = `${root}${delimiters.modifier}${doCase(modKey)}`;
-				stackString += modValue === true
-					? ` ${modifier}`
-					: ` ${modifier}${delimiters.modifierValue}${doCase(modValue.toString())}`;
-			});
+					const modifier = `${root}${delimiters.modifier}${doCase(modKey)}`;
+					stackString += modValue === true
+						? ` ${modifier}`
+						: ` ${modifier}${delimiters.modifierValue}${doCase(modValue.toString())}`;
+				});
+			}
 
 			return mixins ? `${stackString} ${mixins}` : stackString;
 		};
