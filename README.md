@@ -35,6 +35,12 @@ npm install @morev/bem-classnames
 yarn add @morev/bem-classnames
 ```
 
+### Using `pnpm`:
+
+```bash
+pnpm add @morev/bem-classnames
+```
+
 ## Usage
 
 Module exports a BEM classnames factory that allows flexibly customize the syntax.
