@@ -47,9 +47,10 @@
 	"types": "./dist/index.d.ts",
 	"scripts": {
 		"prepare": "lefthook install",
-		"release": "release-it --disable-metrics",
+		"release": "release-it",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
+		"typecheck": "tsc --noEmit",
 		"test": "vitest",
 		"build": "tsdown",
 		"benchmark": "pnpm run build && node benchmarks/bem-classnames.benchmark.mjs"

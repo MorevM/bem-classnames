@@ -41,6 +41,7 @@ plugins:
 hooks:
   before:init:
     - pnpm lint:fix
+    - pnpm typecheck
     - pnpm build
   after:init:
     - pnpm lint

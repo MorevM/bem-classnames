@@ -1,8 +1,12 @@
-import { defineConfig } from 'vitest/config';
+import { defaultExclude, defineConfig } from 'vitest/config';
 
 export default defineConfig({
 	test: {
 		watch: false,
-		watchExclude: ['**/node_modules/**', '**/dist/**'],
+		exclude: [
+			...defaultExclude,
+			'**/node_modules/**',
+			'**/dist/**',
+		],
 	},
 });
