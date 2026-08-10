@@ -1,4 +1,4 @@
-/* eslint-disable vitest/valid-title, vitest/require-hook -- This is test factories */
+/* eslint-disable vitest/require-hook -- This is test factories */
 import { describe, expect, it } from 'vitest';
 import { mergeObjects } from '@morev/utils';
 import { bemClassnames } from '../src/index';

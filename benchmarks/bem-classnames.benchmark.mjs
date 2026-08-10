@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 const distEsmUrl = new URL('../dist/index.js', import.meta.url);
 const distCjsPath = fileURLToPath(new URL('../dist/index.cjs', import.meta.url));
 const projectRoot = fileURLToPath(new URL('..', import.meta.url));
-const resultsDir = fileURLToPath(new URL('./results', import.meta.url));
+const resultsDirectory = fileURLToPath(new URL('./results', import.meta.url));
 
 const { bemClassnames } = await import(distEsmUrl.href);
 
@@ -600,11 +600,11 @@ const createSnapshot = ({ coldStartRows, factoryRows, stableRows, variedRows }) 
 });
 
 const saveSnapshot = (snapshot) => {
-	mkdirSync(resultsDir, { recursive: true });
+	mkdirSync(resultsDirectory, { recursive: true });
 
 	const slug = slugify(snapshot.label ?? 'snapshot');
 	const timestamp = snapshot.createdAt.slice(0, 19).replaceAll(':', '-');
-	const filePath = resolve(resultsDir, `${timestamp}-${slug}.json`);
+	const filePath = resolve(resultsDirectory, `${timestamp}-${slug}.json`);
 
 	writeFileSync(filePath, `${JSON.stringify(snapshot, null, '\t')}\n`);
 	return filePath;

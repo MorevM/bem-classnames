@@ -21,7 +21,7 @@ export const bemClassnames = (userOptions?: Partial<ModuleOptions>): BlockFactor
 		},
 	};
 	const { delimiters, hyphenate, namespace } = options;
-	const doCase = hyphenate ? createCachedKebabCase() : (value: string) => value;
+	const normalizeCase = hyphenate ? createCachedKebabCase() : (value: string) => value;
 
 	return (block: string) => {
 		if (!block) {
@@ -59,10 +59,10 @@ export const bemClassnames = (userOptions?: Partial<ModuleOptions>): BlockFactor
 					const modValue = modifiers![modKey];
 					if (modValue === false || modValue === null || modValue === undefined) return;
 
-					const modifier = `${root}${delimiters.modifier}${doCase(modKey)}`;
+					const modifier = `${root}${delimiters.modifier}${normalizeCase(modKey)}`;
 					stackString += modValue === true
 						? ` ${modifier}`
-						: ` ${modifier}${delimiters.modifierValue}${doCase(modValue.toString())}`;
+						: ` ${modifier}${delimiters.modifierValue}${normalizeCase(modValue.toString())}`;
 				});
 			}
 

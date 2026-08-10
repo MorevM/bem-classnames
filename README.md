@@ -9,7 +9,7 @@
 
 # @morev/bem-classnames
 
-Simple utility for generating classnames according to the [BEM methodology](https://en.bem.info/methodology/).
+Simple utility for generating classnames according to the [BEM methodology].
 
 ---
 
@@ -23,21 +23,21 @@ Simple utility for generating classnames according to the [BEM methodology](http
 
 ## Installation
 
-### Using `npm`:
+### Using `npm`
 
-```bash
+```sh
 npm install @morev/bem-classnames
 ```
 
-### Using `yarn`:
+### Using `yarn`
 
-```bash
+```sh
 yarn add @morev/bem-classnames
 ```
 
-### Using `pnpm`:
+### Using `pnpm`
 
-```bash
+```sh
 pnpm add @morev/bem-classnames
 ```
 
@@ -65,7 +65,8 @@ export const bemFactory = bemClassnames({
 });
 ```
 
-Next, import this factory into your component, declare the `block` name and the function call will transform JS declarations into classnames:
+Next, import this factory into your component, declare the `block` name
+and the function call will transform JS declarations into classnames:
 
 ### block.js
 
@@ -99,17 +100,19 @@ b('element', 'static');
 
 The benchmark measures stable and varied class generation, factory creation, and cold starts. Run it after installing dependencies:
 
-```bash
+```sh
 pnpm run benchmark
 ```
 
 Save results to `benchmarks/results` and compare later changes against them:
 
-```bash
+```sh
 pnpm run benchmark --save baseline
 pnpm run benchmark --compare benchmarks/results/<snapshot>.json
 ```
 
 ## Resource links
 
-[BEM methodology](https://en.bem.info/methodology/)
+[BEM methodology]
+
+[BEM methodology]: https://en.bem.info/methodology/
