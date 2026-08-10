@@ -51,7 +51,7 @@
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"test": "vitest",
-		"build": "tsup",
+		"build": "tsdown",
 		"benchmark": "pnpm run build && node benchmarks/bem-classnames.benchmark.mjs"
 	},
 	"dependencies": {
@@ -64,7 +64,7 @@
 		"eslint": "^10.8.1",
 		"lefthook": "^2.1.10",
 		"release-it": "^21.0.1",
-		"tsup": "^8.5.1",
+		"tsdown": "^0.22.14",
 		"typescript": "^6",
 		"vitest": "^4.1.10"
 	}
