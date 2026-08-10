@@ -1,5 +1,28 @@
 
 
+## [2.0.0](https://github.com/MorevM/bem-classnames/compare/v1.1.2...v2.0.0) (2026-08-10)
+
+### ⚠ BREAKING CHANGES
+
+* `bemClassnames()('')` now throws `TypeError` instead of returning an empty class name factory.
+
+### Performance
+
+* Cache BEM class name normalization ([39f13d8](https://github.com/MorevM/bem-classnames/commit/39f13d8f0dbe02f21e8bd21c6d1e83015b519ddb))
+* Inline `bemClassnames` rendering ([8c35f7b](https://github.com/MorevM/bem-classnames/commit/8c35f7b30a352b1a0c0b8902d41162bd35f48834))
+* Skip empty modifier processing ([16a0ab0](https://github.com/MorevM/bem-classnames/commit/16a0ab02b1b6de4cba4f604de3967229df6ce28d))
+* Speed up options merging ([88c04d3](https://github.com/MorevM/bem-classnames/commit/88c04d3302e7b65d2739820257c5568c51a953cf))
+
+### Tests
+
+* Add reusable performance benchmarks ([0cab442](https://github.com/MorevM/bem-classnames/commit/0cab442ae43b6fc55f8adb0fea340a529a6e643d))
+
+### CI improvements
+
+* Add `Performance` category to CHANGELOG.md ([4f152d1](https://github.com/MorevM/bem-classnames/commit/4f152d191d888a5aa77bc606f2abb5f485c9cd8b))
+* Secure releases with OIDC ([a9b525e](https://github.com/MorevM/bem-classnames/commit/a9b525e53f391c726d97bed828bb8acfda144f23))
+
+
 ## [1.1.2](https://github.com/MorevM/bem-classnames/compare/v1.1.1...v1.1.2) (2025-01-13)
 
 
